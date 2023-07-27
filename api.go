@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"net/http"
 )
 
@@ -34,5 +35,6 @@ func writeJSON(w http.ResponseWriter, s int, v any) error {
 
 func (s *ApiServer) Start(address string) error {
 	http.HandleFunc("/", s.handleGetCatFact)
+	fmt.Println("Server running on Port: 3001")
 	return http.ListenAndServe(address, nil)
 }
